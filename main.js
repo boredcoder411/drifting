@@ -278,6 +278,7 @@ loader.load(
 
 const animate = () => {
   physicsWorld.fixedStep();
+  cannonDebugger.update();
   /*boxMesh.position.copy(carBody.position);
   boxMesh.quaternion.copy(carBody.quaternion);
   sphereMesh1.position.copy(wheelBody1.position);
@@ -288,11 +289,11 @@ const animate = () => {
   sphereMesh3.quaternion.copy(wheelBody3.quaternion);
   sphereMesh4.position.copy(wheelBody4.position);
   sphereMesh4.quaternion.copy(wheelBody4.quaternion);*/
-  //test.camera.position.copy(boxMesh.position);
-  //test.camera.quaternion.copy(boxMesh.quaternion);
+  //test.camera.position.copy(carBody.position);
+  //test.camera.quaternion.copy(carBody.quaternion);
   car.position.copy(carBody.position);
   car.quaternion.copy(carBody.quaternion);
-  //test.camera.lookAt(new THREE.Vector3(car.position.x, car.position.y, car.position.z))
+  test.camera.lookAt(new THREE.Vector3(car.position.x, car.position.y, car.position.z))
   test.render();
   window.requestAnimationFrame(animate);
 };
