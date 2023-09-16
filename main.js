@@ -249,8 +249,15 @@ loader.load(
   // called when the resource is loaded
   function(gltf) {
     car = gltf.scene;
+    car.traverse((o) => {
+      if(o.isMesh && o.name === "Object_8") {
+        o.material.emissive = new THREE.Color(0xFFF63F)
+      }
+      if(o.isMesh && o.name === "Object_10") {
+        o.material.emissive = new THREE.Color(0xFFF63F)
+      }
+    });
     test.scene.add(car);
-    console.log(gltf.scenes)
     gltf.animations; // Array<THREE.AnimationClip>
     gltf.scene; // THREE.Group
     gltf.scenes; // Array<THREE.Group>
