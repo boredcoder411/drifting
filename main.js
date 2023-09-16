@@ -253,9 +253,9 @@ loader.load(
       if(o.isMesh && o.name === "Object_8") {
         o.material.emissive = new THREE.Color(0xFFF63F)
       }
-      if(o.isMesh && o.name === "Object_10") {
+      /*if(o.isMesh && o.name === "Object_10") {
         o.material.emissive = new THREE.Color(0xFFF63F)
-      }
+      }*/
     });
     test.scene.add(car);
     gltf.animations; // Array<THREE.AnimationClip>
@@ -278,7 +278,7 @@ loader.load(
 
 const animate = () => {
   physicsWorld.fixedStep();
-  cannonDebugger.update();
+  //cannonDebugger.update();
   /*boxMesh.position.copy(carBody.position);
   boxMesh.quaternion.copy(carBody.quaternion);
   sphereMesh1.position.copy(wheelBody1.position);
