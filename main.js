@@ -215,32 +215,33 @@ document.addEventListener('keyup', (event) => {
 // planeMesh.rotateX(-Math.PI / 2);
 // test.scene.add(planeMesh);
 
-/*const boxGeometry = new THREE.BoxGeometry(8, 1, 4);
+const boxGeometry = new THREE.BoxGeometry(8, 1, 4);
 const boxMaterial = new THREE.MeshStandardMaterial({ wireframe: true });
 const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-test.scene.add(boxMesh);
+//test.scene.add(boxMesh);
 
 const sphereGeometry1 = new THREE.SphereGeometry(1);
 const sphereMaterial1 = new THREE.MeshStandardMaterial({ wireframe: true, color: 0x00ff00 });
 const sphereMesh1 = new THREE.Mesh(sphereGeometry1, sphereMaterial1);
-test.scene.add(sphereMesh1);
+//test.scene.add(sphereMesh1);
 
 const sphereGeometry2 = new THREE.SphereGeometry(1);
 const sphereMaterial2 = new THREE.MeshStandardMaterial({ wireframe: true, color: 0xff0000 });
 const sphereMesh2 = new THREE.Mesh(sphereGeometry2, sphereMaterial2);
-test.scene.add(sphereMesh2);
+//test.scene.add(sphereMesh2);
 
 const sphereGeometry3 = new THREE.SphereGeometry(1);
 const sphereMaterial3 = new THREE.MeshStandardMaterial({ wireframe: true, color: 0x0000ff });
 const sphereMesh3 = new THREE.Mesh(sphereGeometry3, sphereMaterial3);
-test.scene.add(sphereMesh3);
+//test.scene.add(sphereMesh3);
 
 const sphereGeometry4 = new THREE.SphereGeometry(1);
 const sphereMaterial4 = new THREE.MeshStandardMaterial({ wireframe: true });
 const sphereMesh4 = new THREE.Mesh(sphereGeometry4, sphereMaterial4);
-test.scene.add(sphereMesh4);*/
+//test.scene.add(sphereMesh4);
 
 var car = undefined;
+var wheel = undefined;
 
 const loader = new GLTFLoader();
 loader.load(
@@ -252,6 +253,9 @@ loader.load(
     car.traverse((o) => {
       if(o.isMesh && o.name === "Object_8") {
         o.material.emissive = new THREE.Color(0xFFF63F)
+      }
+      if(o.name === "Circle003_13") {
+        wheel = o;
       }
       /*if(o.isMesh && o.name === "Object_10") {
         o.material.emissive = new THREE.Color(0xFFF63F)
@@ -279,7 +283,7 @@ loader.load(
 const animate = () => {
   physicsWorld.fixedStep();
   //cannonDebugger.update();
-  /*boxMesh.position.copy(carBody.position);
+  boxMesh.position.copy(carBody.position);
   boxMesh.quaternion.copy(carBody.quaternion);
   sphereMesh1.position.copy(wheelBody1.position);
   sphereMesh1.quaternion.copy(wheelBody1.quaternion);
@@ -288,9 +292,10 @@ const animate = () => {
   sphereMesh3.position.copy(wheelBody3.position);
   sphereMesh3.quaternion.copy(wheelBody3.quaternion);
   sphereMesh4.position.copy(wheelBody4.position);
-  sphereMesh4.quaternion.copy(wheelBody4.quaternion);*/
+  sphereMesh4.quaternion.copy(wheelBody4.quaternion);
   //test.camera.position.copy(carBody.position);
   //test.camera.quaternion.copy(carBody.quaternion);
+  wheel.rotation.y = sphereMesh2.rotation.y;
   car.position.copy(carBody.position);
   car.quaternion.copy(carBody.quaternion);
   test.camera.lookAt(new THREE.Vector3(car.position.x, car.position.y, car.position.z))
